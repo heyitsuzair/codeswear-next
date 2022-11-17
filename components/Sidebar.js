@@ -5,6 +5,7 @@ import {
   AiOutlineShoppingCart,
   AiOutlinePlus,
   AiOutlineMinus,
+  AiOutlineDelete,
 } from "react-icons/ai";
 import { BsFillBagCheckFill } from "react-icons/bs";
 
@@ -73,10 +74,13 @@ const Sidebar = () => {
         </ol>
         <Link
           href="checkout"
-          className="flex mx-auto items-center gap-2 w-full justify-center mt-16 text-white bg-pink-500 border-0 py-2 px-8 focus:outline-none hover:bg-pink-600 rounded text-md"
+          className="flex mx-auto items-center gap-2 w-full justify-center mt-16 text-white bg-pink-500 border-0 py-2 px-8 focus:outline-none transition-colors hover:bg-pink-600 rounded text-md"
         >
           <BsFillBagCheckFill /> Checkout
         </Link>
+        <div className="cursor-pointer transition-colors flex mx-auto items-center gap-2 w-full justify-center mt-2 text-white bg-pink-500 border-0 py-2 px-8 focus:outline-none hover:bg-pink-600 rounded text-md">
+          <AiOutlineDelete /> Clear Cart
+        </div>
       </div>
     </>
   );
