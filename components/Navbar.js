@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import Sidebar from "./Sidebar";
 
 const Navbar = () => {
   return (
@@ -33,9 +33,8 @@ const Navbar = () => {
           </Link>
         </ul>
       </div>
-      <div className="cart absolute right-0 mx-5">
-        <AiOutlineShoppingCart size={30} />
-      </div>
+
+      <Sidebar />
     </div>
   );
 };

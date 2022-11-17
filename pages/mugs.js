@@ -15,13 +15,13 @@ const Mugs = () => {
           <div className="flex flex-wrap justify-center -m-4">
             <Link href="/product/wear-the-code">
               <div className="p-4 w-full cursor-pointer shadow-lg m-1 rounded-md">
-                <a className="block relative rounded overflow-hidden">
+                <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
                     className="h-[30vh] m-auto md:h-[35vh]"
                     src="https://m.media-amazon.com/images/I/711mw-D-EtL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
                   />
-                </a>
+                </div>
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirts
@@ -36,13 +36,13 @@ const Mugs = () => {
             </Link>
             <Link href="/product/wear-the-code">
               <div className="p-4 w-full cursor-pointer shadow-lg m-1 rounded-md">
-                <a className="block relative rounded overflow-hidden">
+                <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
                     className="h-[30vh] m-auto md:h-[35vh]"
                     src="https://m.media-amazon.com/images/I/711mw-D-EtL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
                   />
-                </a>
+                </div>
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirts
@@ -57,13 +57,13 @@ const Mugs = () => {
             </Link>
             <Link href="/product/wear-the-code">
               <div className="p-4 w-full cursor-pointer shadow-lg m-1 rounded-md">
-                <a className="block relative rounded overflow-hidden">
+                <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
                     className="h-[30vh] m-auto md:h-[35vh]"
                     src="https://m.media-amazon.com/images/I/711mw-D-EtL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
                   />
-                </a>
+                </div>
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirts
@@ -78,13 +78,13 @@ const Mugs = () => {
             </Link>
             <Link href="/product/wear-the-code">
               <div className="p-4 w-full cursor-pointer shadow-lg m-1 rounded-md">
-                <a className="block relative rounded overflow-hidden">
+                <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
                     className="h-[30vh] m-auto md:h-[35vh]"
                     src="https://m.media-amazon.com/images/I/711mw-D-EtL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
                   />
-                </a>
+                </div>
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirts
@@ -99,13 +99,13 @@ const Mugs = () => {
             </Link>
             <Link href="/product/wear-the-code">
               <div className="p-4 w-full cursor-pointer shadow-lg m-1 rounded-md">
-                <a className="block relative rounded overflow-hidden">
+                <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
                     className="h-[30vh] m-auto md:h-[35vh]"
                     src="https://m.media-amazon.com/images/I/711mw-D-EtL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
                   />
-                </a>
+                </div>
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirts
@@ -120,13 +120,13 @@ const Mugs = () => {
             </Link>
             <Link href="/product/wear-the-code">
               <div className="p-4 w-full cursor-pointer shadow-lg m-1 rounded-md">
-                <a className="block relative rounded overflow-hidden">
+                <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
                     className="h-[30vh] m-auto md:h-[35vh]"
                     src="https://m.media-amazon.com/images/I/711mw-D-EtL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
                   />
-                </a>
+                </div>
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirts
@@ -141,13 +141,13 @@ const Mugs = () => {
             </Link>
             <Link href="/product/wear-the-code">
               <div className="p-4 w-full cursor-pointer shadow-lg m-1 rounded-md">
-                <a className="block relative rounded overflow-hidden">
+                <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
                     className="h-[30vh] m-auto md:h-[35vh]"
                     src="https://m.media-amazon.com/images/I/711mw-D-EtL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
                   />
-                </a>
+                </div>
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirts
@@ -162,13 +162,13 @@ const Mugs = () => {
             </Link>
             <Link href="/product/wear-the-code">
               <div className="p-4 w-full cursor-pointer shadow-lg m-1 rounded-md">
-                <a className="block relative rounded overflow-hidden">
+                <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
                     className="h-[30vh] m-auto md:h-[35vh]"
                     src="https://m.media-amazon.com/images/I/711mw-D-EtL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
                   />
-                </a>
+                </div>
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirts
@@ -183,13 +183,13 @@ const Mugs = () => {
             </Link>
             <Link href="/product/wear-the-code">
               <div className="p-4 w-full cursor-pointer shadow-lg m-1 rounded-md">
-                <a className="block relative rounded overflow-hidden">
+                <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
                     className="h-[30vh] m-auto md:h-[35vh]"
                     src="https://m.media-amazon.com/images/I/711mw-D-EtL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
                   />
-                </a>
+                </div>
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirts
@@ -204,13 +204,13 @@ const Mugs = () => {
             </Link>
             <Link href="/product/wear-the-code">
               <div className="p-4 w-full cursor-pointer shadow-lg m-1 rounded-md">
-                <a className="block relative rounded overflow-hidden">
+                <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
                     className="h-[30vh] m-auto md:h-[35vh]"
                     src="https://m.media-amazon.com/images/I/711mw-D-EtL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
                   />
-                </a>
+                </div>
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirts
@@ -225,13 +225,13 @@ const Mugs = () => {
             </Link>
             <Link href="/product/wear-the-code">
               <div className="p-4 w-full cursor-pointer shadow-lg m-1 rounded-md">
-                <a className="block relative rounded overflow-hidden">
+                <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
                     className="h-[30vh] m-auto md:h-[35vh]"
                     src="https://m.media-amazon.com/images/I/711mw-D-EtL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
                   />
-                </a>
+                </div>
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirts
@@ -246,13 +246,13 @@ const Mugs = () => {
             </Link>
             <Link href="/product/wear-the-code">
               <div className="p-4 w-full cursor-pointer shadow-lg m-1 rounded-md">
-                <a className="block relative rounded overflow-hidden">
+                <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
                     className="h-[30vh] m-auto md:h-[35vh]"
                     src="https://m.media-amazon.com/images/I/711mw-D-EtL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
                   />
-                </a>
+                </div>
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirts
@@ -267,13 +267,13 @@ const Mugs = () => {
             </Link>
             <Link href="/product/wear-the-code">
               <div className="p-4 w-full cursor-pointer shadow-lg m-1 rounded-md">
-                <a className="block relative rounded overflow-hidden">
+                <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
                     className="h-[30vh] m-auto md:h-[35vh]"
                     src="https://m.media-amazon.com/images/I/711mw-D-EtL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
                   />
-                </a>
+                </div>
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirts
@@ -288,13 +288,13 @@ const Mugs = () => {
             </Link>
             <Link href="/product/wear-the-code">
               <div className="p-4 w-full cursor-pointer shadow-lg m-1 rounded-md">
-                <a className="block relative rounded overflow-hidden">
+                <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
                     className="h-[30vh] m-auto md:h-[35vh]"
                     src="https://m.media-amazon.com/images/I/711mw-D-EtL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
                   />
-                </a>
+                </div>
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirts
@@ -309,13 +309,13 @@ const Mugs = () => {
             </Link>
             <Link href="/product/wear-the-code">
               <div className="p-4 w-full cursor-pointer shadow-lg m-1 rounded-md">
-                <a className="block relative rounded overflow-hidden">
+                <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
                     className="h-[30vh] m-auto md:h-[35vh]"
                     src="https://m.media-amazon.com/images/I/711mw-D-EtL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
                   />
-                </a>
+                </div>
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirts
@@ -330,13 +330,13 @@ const Mugs = () => {
             </Link>
             <Link href="/product/wear-the-code">
               <div className="p-4 w-full cursor-pointer shadow-lg m-1 rounded-md">
-                <a className="block relative rounded overflow-hidden">
+                <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
                     className="h-[30vh] m-auto md:h-[35vh]"
                     src="https://m.media-amazon.com/images/I/711mw-D-EtL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
                   />
-                </a>
+                </div>
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirts
@@ -351,13 +351,13 @@ const Mugs = () => {
             </Link>
             <Link href="/product/wear-the-code">
               <div className="p-4 w-full cursor-pointer shadow-lg m-1 rounded-md">
-                <a className="block relative rounded overflow-hidden">
+                <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
                     className="h-[30vh] m-auto md:h-[35vh]"
                     src="https://m.media-amazon.com/images/I/711mw-D-EtL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
                   />
-                </a>
+                </div>
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirts
@@ -372,13 +372,13 @@ const Mugs = () => {
             </Link>
             <Link href="/product/wear-the-code">
               <div className="p-4 w-full cursor-pointer shadow-lg m-1 rounded-md">
-                <a className="block relative rounded overflow-hidden">
+                <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
                     className="h-[30vh] m-auto md:h-[35vh]"
                     src="https://m.media-amazon.com/images/I/711mw-D-EtL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
                   />
-                </a>
+                </div>
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirts
@@ -393,13 +393,13 @@ const Mugs = () => {
             </Link>
             <Link href="/product/wear-the-code">
               <div className="p-4 w-full cursor-pointer shadow-lg m-1 rounded-md">
-                <a className="block relative rounded overflow-hidden">
+                <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
                     className="h-[30vh] m-auto md:h-[35vh]"
                     src="https://m.media-amazon.com/images/I/711mw-D-EtL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
                   />
-                </a>
+                </div>
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirts
@@ -414,13 +414,13 @@ const Mugs = () => {
             </Link>
             <Link href="/product/wear-the-code">
               <div className="p-4 w-full cursor-pointer shadow-lg m-1 rounded-md">
-                <a className="block relative rounded overflow-hidden">
+                <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
                     className="h-[30vh] m-auto md:h-[35vh]"
                     src="https://m.media-amazon.com/images/I/711mw-D-EtL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
                   />
-                </a>
+                </div>
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirts
