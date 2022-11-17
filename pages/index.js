@@ -5,13 +5,14 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Codeswear - Engineered For Excellence</title>
         <meta
           name="description"
           content="Codeswear-Engineered For Excellence"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div className="mx-4">Hey Uzair;</div>
     </div>
   );
 }
