@@ -1,9 +1,15 @@
 import Link from "next/link";
 import React from "react";
+import Head from "next/head";
 
 const Tshirts = () => {
   return (
     <div>
+      <Head>
+        <title>T-Shirts</title>
+        <meta name="description" content="Codeswear Tshirts Collection" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap justify-center -m-4">
