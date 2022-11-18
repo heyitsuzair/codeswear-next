@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 import { AiFillLock } from "react-icons/ai";
@@ -5,6 +6,14 @@ import { AiFillLock } from "react-icons/ai";
 const Signup = () => {
   return (
     <div>
+      <Head>
+        <title>Signup</title>
+        <meta
+          name="description"
+          content="Codeswear-Engineered For Excellence"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>

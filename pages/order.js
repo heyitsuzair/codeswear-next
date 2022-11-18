@@ -1,8 +1,17 @@
+import Head from "next/head";
 import React from "react";
 
 const Order = () => {
   return (
     <section className="text-gray-600 body-font overflow-hidden">
+      <Head>
+        <title>Order Placed</title>
+        <meta
+          name="description"
+          content="Codeswear-Engineered For Excellence"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="container px-5 py-24 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
           <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
