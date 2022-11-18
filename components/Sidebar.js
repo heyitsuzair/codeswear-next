@@ -73,7 +73,7 @@ const Sidebar = () => {
           </li>
         </ol>
         <Link
-          href="checkout"
+          href="/checkout"
           className="flex mx-auto items-center gap-2 w-full justify-center mt-16 text-white bg-pink-500 border-0 py-2 px-8 focus:outline-none transition-colors hover:bg-pink-600 rounded text-md"
         >
           <BsFillBagCheckFill /> Checkout
