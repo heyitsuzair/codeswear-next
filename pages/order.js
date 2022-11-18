@@ -15,12 +15,16 @@ const Order = () => {
             <p className="leading-relaxed mb-4 text-pink-500">
               Your Order Has Been Placed :)
             </p>
-            <div class="flex mb-4">
-              <a class="flex-grow  py-2 text-lg px-1 text-center">
+            <div className="flex mb-4">
+              <a className="flex-grow  py-2 text-lg px-1 text-center">
                 Item Description
               </a>
-              <a class="flex-grow  py-2 text-lg px-1 text-center">Quantity</a>
-              <a class="flex-grow  py-2 text-lg px-1 text-center">Item Total</a>
+              <a className="flex-grow py-2 text-lg px-1 text-center">
+                Quantity
+              </a>
+              <a className="flex-grow py-2 text-lg px-1 text-center">
+                Item Total
+              </a>
             </div>
             <div className="flex border-t border-gray-200 py-2">
               <span className="text-gray-500">Wear The Code (XL/Black)</span>

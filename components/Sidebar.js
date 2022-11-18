@@ -8,6 +8,7 @@ import {
   AiOutlineDelete,
 } from "react-icons/ai";
 import { BsFillBagCheckFill } from "react-icons/bs";
+import { MdAccountCircle } from "react-icons/md";
 
 const Sidebar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
   const ref = useRef();
@@ -23,11 +24,11 @@ const Sidebar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
 
   return (
     <>
-      <div
-        onClick={ToggleCart}
-        className="cursor-pointer cart absolute right-0 mx-5"
-      >
-        <AiOutlineShoppingCart size={30} />
+      <div className="cursor-pointer cart absolute right-0 mx-5 flex gap-2 items-center">
+        <Link href="/login">
+          <MdAccountCircle size={30} />
+        </Link>
+        <AiOutlineShoppingCart onClick={ToggleCart} size={30} />
       </div>
       <div
         className={`${
