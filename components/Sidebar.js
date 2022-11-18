@@ -9,7 +9,7 @@ import {
 } from "react-icons/ai";
 import { BsFillBagCheckFill } from "react-icons/bs";
 
-const Sidebar = () => {
+const Sidebar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
   const ref = useRef();
   const ToggleCart = () => {
     if (ref.current.classList.contains("translate-x-full")) {
@@ -40,45 +40,65 @@ const Sidebar = () => {
         >
           <AiFillCloseCircle />
         </span>
-        <ol className="list-decimal font-semibold">
-          <li>
-            <div className="item flex items-center my-5">
-              <div className="w-2/3 font-semibold">Tshirt-Wear The Code</div>
-              <div className="flex items-center font-semibold text-pink-500 justify-center w-1/3">
-                <AiOutlineMinus className="cursor-pointer" size={30} />
-                <span className="mx-4">1</span>
-                <AiOutlinePlus className="cursor-pointer" size={30} />
-              </div>
-            </div>
-          </li>
-          <li>
-            <div className="item flex items-center my-5">
-              <div className="w-2/3 font-semibold">Tshirt-Wear The Code</div>
-              <div className="flex items-center font-semibold text-pink-500 justify-center w-1/3">
-                <AiOutlineMinus className="cursor-pointer" size={30} />
-                <span className="mx-4">1</span>
-                <AiOutlinePlus className="cursor-pointer" size={30} />
-              </div>
-            </div>
-          </li>
-          <li>
-            <div className="item flex items-center my-5">
-              <div className="w-2/3 font-semibold">Tshirt-Wear The Code</div>
-              <div className="flex items-center font-semibold text-pink-500 justify-center w-1/3">
-                <AiOutlineMinus className="cursor-pointer" size={30} />
-                <span className="mx-4">1</span>
-                <AiOutlinePlus className="cursor-pointer" size={30} />
-              </div>
-            </div>
-          </li>
-        </ol>
+        {Object.keys(cart).length === 0 ? (
+          <div className="my-4 font-semibold text-center">
+            Your Cart Is Empty
+          </div>
+        ) : (
+          <ol className="list-decimal font-semibold">
+            {Object.keys(cart).map((k) => {
+              return (
+                <li key={k}>
+                  <div className="item flex items-center my-5">
+                    <div className="w-2/3 font-semibold">{cart[k].name}</div>
+                    <div className="flex items-center font-semibold text-pink-500 justify-center w-1/3">
+                      <AiOutlineMinus
+                        className="cursor-pointer"
+                        size={30}
+                        onClick={() =>
+                          removeFromCart(
+                            k,
+                            1,
+                            cart[k].price,
+                            cart[k].name,
+                            cart[k].size,
+                            cart[k].variant
+                          )
+                        }
+                      />
+                      <span className="mx-4">{cart[k].qty}</span>
+                      <AiOutlinePlus
+                        className="cursor-pointer"
+                        onClick={() =>
+                          addToCart(
+                            k,
+                            1,
+                            cart[k].price,
+                            cart[k].name,
+                            cart[k].size,
+                            cart[k].variant
+                          )
+                        }
+                        size={30}
+                      />
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        )}
+
         <Link
           href="/checkout"
-          className="flex mx-auto items-center gap-2 w-full justify-center mt-16 text-white bg-pink-500 border-0 py-2 px-8 focus:outline-none transition-colors hover:bg-pink-600 rounded text-md"
+          className="flex mx-auto items-center gap-2 w-full justify-center mt-4 text-white bg-pink-500 border-0 py-2 px-8 focus:outline-none transition-colors hover:bg-pink-600 rounded text-md"
         >
           <BsFillBagCheckFill /> Checkout
         </Link>
-        <div className="cursor-pointer transition-colors flex mx-auto items-center gap-2 w-full justify-center mt-2 text-white bg-pink-500 border-0 py-2 px-8 focus:outline-none hover:bg-pink-600 rounded text-md">
+        <div
+          className="cursor-pointer transition-colors flex mx-auto items-center gap-2 w-full justify-center mt-2 text-white bg-pink-500 border-0 py-2 px-8 focus:outline-none hover:bg-pink-600 rounded text-md"
+          onClick={clearCart}
+        >
           <AiOutlineDelete /> Clear Cart
         </div>
       </div>

@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import Sidebar from "./Sidebar";
 
-const Navbar = () => {
+const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
   return (
     <div className="shadow-md flex flex-col md:flex-row md:justify-start justify-center items-center  py-3">
       <div className="logo mx-5">
@@ -34,7 +34,13 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <Sidebar />
+      <Sidebar
+        cart={cart}
+        addToCart={addToCart}
+        removeFromCart={removeFromCart}
+        clearCart={clearCart}
+        subTotal={subTotal}
+      />
     </div>
   );
 };
