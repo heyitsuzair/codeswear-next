@@ -5,7 +5,7 @@ import Sidebar from "./Sidebar";
 
 const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
   return (
-    <div className="shadow-md flex flex-col md:flex-row md:justify-start justify-center items-center  py-3">
+    <div className="sticky top-0 bg-white z-10 shadow-md flex flex-col md:flex-row md:justify-start justify-center items-center py-3">
       <div className="logo mx-5">
         <Link href="/">
           <Image

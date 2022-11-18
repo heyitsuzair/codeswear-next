@@ -30,7 +30,9 @@ const Sidebar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
         <AiOutlineShoppingCart size={30} />
       </div>
       <div
-        className="z-10 sidecart transition-transform translate-x-full transform fixed top-0 right-0 bg-pink-100 py-10 px-8 w-100 h-full"
+        className={`${
+          Object.keys(cart).length !== 0 ? "translate-x-0" : "translate-x-full"
+        } z-10 sidecart transition-transform  transform fixed top-0 right-0 bg-pink-100 py-10 px-8 w-100 h-full`}
         ref={ref}
       >
         <h2 className="font-bold text-xl text-center">Shopping Cart</h2>
@@ -88,7 +90,9 @@ const Sidebar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
             })}
           </ol>
         )}
-
+        <span>
+          Total: <strong>Rs {subTotal}</strong>
+        </span>
         <Link
           href="/checkout"
           className="flex mx-auto items-center gap-2 w-full justify-center mt-4 text-white bg-pink-500 border-0 py-2 px-8 focus:outline-none transition-colors hover:bg-pink-600 rounded text-md"

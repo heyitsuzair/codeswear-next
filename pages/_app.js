@@ -15,6 +15,7 @@ function MyApp({ Component, pageProps }) {
       subt += myCart[keys[i]].price * myCart[keys[i]].qty;
     }
     setSubTotal(subt);
+    localStorage.setItem("subtotal", JSON.stringify(subt));
   };
 
   const addToCart = (itemCode, quantity, price, name, size, variant) => {
@@ -50,6 +51,9 @@ function MyApp({ Component, pageProps }) {
     try {
       if (localStorage.getItem("cart")) {
         setCart(JSON.parse(localStorage.getItem("cart")));
+      }
+      if (localStorage.getItem("subtotal")) {
+        setSubTotal(JSON.parse(localStorage.getItem("subtotal")));
       }
     } catch (error) {
       console.warn(error);
