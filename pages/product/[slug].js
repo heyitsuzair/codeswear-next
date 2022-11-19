@@ -1,12 +1,15 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import PincodeForm from "../../components/PincodeForm";
+import axios from "axios";
+import { getProducts } from "../../utils/api";
 
-const Slug = ({ addToCart }) => {
+const Slug = ({ addToCart, product }) => {
   const [service, setService] = useState(null);
 
   const router = useRouter();
   const { slug } = router.query;
+  console.log(product);
   return (
     <div>
       <section className="text-gray-600 body-font overflow-hidden">
@@ -210,5 +213,19 @@ const Slug = ({ addToCart }) => {
     </div>
   );
 };
+export async function getServerSideProps(context) {
+  let product = [];
+  try {
+    const { data } = await axios.put(getProducts + context.query.slug);
+    if (data.error === false) {
+      product = data.product;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+  return {
+    props: { product }, // will be passed to the page component as props
+  };
+}
 
 export default Slug;

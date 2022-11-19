@@ -34,7 +34,35 @@ const Tshirts = ({ products }) => {
                         {product.desc}
                       </h2>
                       <p className="mt-1">Rs {product.price}</p>
-                      <p className="mt-1"> {product.size}</p>
+                      <div className="sizes flex justify-start gap-1 mt-2">
+                        {product.size.map((productSize, index) => {
+                          return product.size.length !== index + 1 ? (
+                            <p
+                              key={index}
+                              className="mt-1 border border-gray-300 px-5"
+                            >
+                              {productSize}
+                            </p>
+                          ) : (
+                            <p
+                              key={index}
+                              className="mt-1 border border-gray-300 px-5"
+                            >
+                              {productSize}
+                            </p>
+                          );
+                        })}
+                      </div>
+                      <div className="colors flex justify-start gap-1 mt-2">
+                        {product.color.map((productColor, index) => {
+                          return (
+                            <button
+                              key={index}
+                              className={`border-2 border-gray-300 bg-${productColor}-500 rounded-full w-6 h-6 focus:outline-none`}
+                            ></button>
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
                 </Link>
