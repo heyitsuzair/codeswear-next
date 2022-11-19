@@ -2,6 +2,9 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/globals.css";
 import { useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState({});
@@ -18,12 +21,16 @@ function MyApp({ Component, pageProps }) {
     localStorage.setItem("subtotal", JSON.stringify(subt));
   };
 
-  const addToCart = (itemCode, quantity, price, name, size, variant) => {
+  const addToCart = (itemCode, quantity, price, name, size, color) => {
+    if (color === null) {
+      toast.warn("Please Select Color");
+      return;
+    }
     let newCart = cart;
     if (itemCode in cart) {
       newCart[itemCode].qty = cart[itemCode].qty + 1;
     } else {
-      newCart[itemCode] = { qty: 1, price, name, size, variant };
+      newCart[itemCode] = { qty: 1, price, name, size, color };
     }
     setCart(newCart);
     saveCart(newCart);
@@ -35,7 +42,7 @@ function MyApp({ Component, pageProps }) {
     saveCart({});
   };
 
-  const removeFromCart = (itemCode, qty, price, name, size, variant) => {
+  const removeFromCart = (itemCode, qty, price, name, size, color) => {
     let newCart = cart;
     if (itemCode in cart) {
       newCart[itemCode].qty = cart[itemCode].qty - qty;
@@ -70,6 +77,14 @@ function MyApp({ Component, pageProps }) {
         removeFromCart={removeFromCart}
         clearCart={clearCart}
         subTotal={subTotal}
+      />
+      <ToastContainer
+        autoClose={2000}
+        position="top-right"
+        pauseOnHover={true}
+        draggable={true}
+        theme="light"
+        toastClassName="toast-custom"
       />
       <Component
         cart={cart}

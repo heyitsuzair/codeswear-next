@@ -56,8 +56,8 @@ const Sidebar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
                     <div className="w-2/3 font-semibold">{cart[k].name}</div>
                     <div className="flex items-center font-semibold text-pink-500 justify-center w-1/3">
                       <AiOutlineMinus
-                        className="cursor-pointer"
-                        size={30}
+                        className="cursor-pointer font-bold"
+                        size={70}
                         onClick={() =>
                           removeFromCart(
                             k,
@@ -71,7 +71,7 @@ const Sidebar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
                       />
                       <span className="mx-4">{cart[k].qty}</span>
                       <AiOutlinePlus
-                        className="cursor-pointer"
+                        className="cursor-pointer font-bold"
                         onClick={() =>
                           addToCart(
                             k,
@@ -82,7 +82,7 @@ const Sidebar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
                             cart[k].variant
                           )
                         }
-                        size={30}
+                        size={70}
                       />
                     </div>
                   </div>

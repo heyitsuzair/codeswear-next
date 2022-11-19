@@ -59,7 +59,7 @@ const Mugs = ({ products }) => {
                           return (
                             <button
                               key={index}
-                              className={`border-2 border-gray-300 ml-1 bg-${productColor}-500 rounded-full w-6 h-6 focus:outline-none`}
+                              className={`border-2 border-gray-300 ml-1 bg-${productColor} rounded-full w-6 h-6 focus:outline-none`}
                             ></button>
                           );
                         })}
