@@ -26,9 +26,13 @@ const Sidebar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
     <>
       <div className="cursor-pointer cart absolute right-0 mx-5 flex gap-2 items-center">
         <Link href="/login">
-          <MdAccountCircle size={30} />
+          <MdAccountCircle className="hover:text-pink-600" size={30} />
         </Link>
-        <AiOutlineShoppingCart onClick={ToggleCart} size={30} />
+        <AiOutlineShoppingCart
+          className="hover:text-pink-600"
+          onClick={ToggleCart}
+          size={30}
+        />
       </div>
       <div
         className={`${
@@ -53,7 +57,10 @@ const Sidebar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
               return (
                 <li key={k}>
                   <div className="item flex items-center my-5">
-                    <div className="w-2/3 font-semibold">{cart[k].name}</div>
+                    <div className="w-2/3 font-semibold">
+                      {cart[k].name} ({cart[k].size && cart[k].size + "/"}
+                      {cart[k].color.toUpperCase()})
+                    </div>
                     <div className="flex items-center font-semibold text-pink-500 justify-center w-1/3">
                       <AiOutlineMinus
                         className="cursor-pointer font-bold"

@@ -20,16 +20,16 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
       <div className="nav">
         <ul className="flex space-x-2 font-bold md:text-sm">
           <Link href="/tshirts">
-            <li>T-Shirts</li>
+            <li className="hover:text-pink-600">T-Shirts</li>
           </Link>
           <Link href="/hoodies">
-            <li>Hoodies</li>
+            <li className="hover:text-pink-600">Hoodies</li>
           </Link>
           <Link href="/mugs">
-            <li>Mugs</li>
+            <li className="hover:text-pink-600">Mugs</li>
           </Link>
           <Link href="/stickers">
-            <li>Stickers</li>
+            <li className="hover:text-pink-600">Stickers</li>
           </Link>
         </ul>
       </div>
