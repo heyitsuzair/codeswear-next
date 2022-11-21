@@ -1,9 +1,52 @@
 import Head from "next/head";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { AiFillLock } from "react-icons/ai";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { addUser } from "../utils/api";
 
 const Signup = () => {
+  const [formValues, setFormValues] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const handleChange = (e) => {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formValues.name) {
+      toast.warn("Please Enter Your Name");
+      return;
+    }
+    if (!formValues.email) {
+      toast.warn("Please Enter Your Email");
+      return;
+    }
+    if (!formValues.password) {
+      toast.warn("Please Enter Password");
+      return;
+    }
+    try {
+      const formData = {
+        name: formValues.name,
+        email: formValues.email,
+        password: formValues.password,
+      };
+      const { data } = await axios.post(addUser, formData);
+
+      if (data.error === false) {
+        toast.success(data.msg);
+        setFormValues({ name: "", email: "", password: "" });
+      }
+    } catch (error) {
+      toast.error(error.response.data.msg);
+    }
+  };
+
   return (
     <div>
       <Head>
@@ -26,17 +69,17 @@ const Signup = () => {
               Create New Account
             </h2>
             <p className="mt-2 text-center text-sm text-gray-600">
-              Or{" "}
+              Or
               <Link
                 href="/login"
                 className="font-medium text-pink-600 hover:text-pink-500"
               >
+                {" "}
                 Login
               </Link>
             </p>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
-            <input type="hidden" name="remember" defaultValue="true" />
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
                 <label htmlFor="name-address" className="sr-only">
@@ -45,9 +88,10 @@ const Signup = () => {
                 <input
                   id="name"
                   name="name"
+                  onChange={(e) => handleChange(e)}
                   type="text"
                   autoComplete="name"
-                  required
+                  value={formValues.name}
                   className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-pink-500 focus:outline-none focus:ring-pink-500 sm:text-sm"
                   placeholder="Name"
                 />
@@ -59,9 +103,10 @@ const Signup = () => {
                 <input
                   id="email-address"
                   name="email"
+                  onChange={(e) => handleChange(e)}
                   type="email"
+                  value={formValues.email}
                   autoComplete="email"
-                  required
                   className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-pink-500 focus:outline-none focus:ring-pink-500 sm:text-sm"
                   placeholder="Email address"
                 />
@@ -73,9 +118,10 @@ const Signup = () => {
                 <input
                   id="password"
                   name="password"
+                  onChange={(e) => handleChange(e)}
+                  value={formValues.password}
                   type="password"
                   autoComplete="current-password"
-                  required
                   className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-pink-500 focus:outline-none focus:ring-pink-500 sm:text-sm"
                   placeholder="Password"
                 />
