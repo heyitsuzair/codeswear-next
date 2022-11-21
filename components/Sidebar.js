@@ -59,7 +59,7 @@ const Sidebar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
                   <div className="item flex items-center my-5">
                     <div className="w-2/3 font-semibold">
                       {cart[k].name} ({cart[k].size && cart[k].size + "/"}
-                      {cart[k].color.toUpperCase()})
+                      {cart[k].color && cart[k].color.toUpperCase()})
                     </div>
                     <div className="flex items-center font-semibold text-pink-500 justify-center w-1/3">
                       <AiOutlineMinus

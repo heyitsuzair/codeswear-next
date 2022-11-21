@@ -79,7 +79,7 @@ export async function getServerSideProps(context) {
   let products = [];
   try {
     const { data } = await axios.get(getProducts + "mug");
-    console.log(data);
+
     if (data.error === false) {
       products = data.products;
     }

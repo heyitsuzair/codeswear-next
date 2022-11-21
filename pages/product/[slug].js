@@ -10,7 +10,7 @@ const Slug = ({ addToCart, product, buyNow }) => {
 
   const router = useRouter();
   const { slug } = router.query;
-  const [color, setColor] = useState(null);
+  const [color, setColor] = useState(product.color[0]);
   const [size, setSize] = useState(product.size[0]);
 
   return (
@@ -39,7 +39,9 @@ const Slug = ({ addToCart, product, buyNow }) => {
               <p className="leading-relaxed">{product.desc}</p>
               <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                 <div className="flex">
-                  <span className="mr-3">Color</span>
+                  <span className="mr-3">
+                    {product.color.length > 0 && <span>Color</span>}
+                  </span>
                   {product.color.length > 0 &&
                     product.color.map((clr, index) => {
                       return (

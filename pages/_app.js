@@ -25,10 +25,6 @@ function MyApp({ Component, pageProps }) {
   };
 
   const addToCart = (itemCode, quantity, price, name, size, color) => {
-    if (color === null) {
-      toast.warn("Please Select Color");
-      return false;
-    }
     let newCart = cart;
     if (itemCode in cart) {
       newCart[itemCode].qty = cart[itemCode].qty + 1;
@@ -65,10 +61,6 @@ function MyApp({ Component, pageProps }) {
   const buyNow = (itemCode, qty, price, name, size, color) => {
     let newCart = { itemCode: { qty: 1, price, name, size, color } };
 
-    if (color === null) {
-      toast.warn("Please Select Color");
-      return false;
-    }
     setCart(newCart);
     saveCart(newCart);
 
