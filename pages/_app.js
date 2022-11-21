@@ -38,12 +38,16 @@ function MyApp({ Component, pageProps }) {
     setCart(newCart);
     saveCart(newCart);
 
+    toast.success("Item Added To Cart!");
+
     return true;
   };
 
   const clearCart = () => {
     setCart({});
     saveCart({});
+
+    toast.success("Cart Cleared!");
   };
 
   const removeFromCart = (itemCode, qty, price, name, size, color) => {
@@ -99,7 +103,7 @@ function MyApp({ Component, pageProps }) {
       />
       <ToastContainer
         autoClose={2000}
-        position="top-right"
+        position="bottom-center"
         pauseOnHover={true}
         draggable={true}
         theme="light"

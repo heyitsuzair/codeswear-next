@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { fetchPincodes } from "../utils/api";
+import { toast } from "react-toastify";
 
 const PincodeForm = ({ setService }) => {
   const [pin, setPin] = useState("");
@@ -10,8 +11,10 @@ const PincodeForm = ({ setService }) => {
 
       if (data.includes(parseInt(pin))) {
         setService(true);
+        toast.success("Your Pincode Is Servicable!");
       } else {
         setService(false);
+        toast.error("Sorry! Pincode Is Not Servicable!");
       }
     } catch (error) {
       console.warn(error);
