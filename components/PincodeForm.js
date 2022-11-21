@@ -6,18 +6,22 @@ import { toast } from "react-toastify";
 const PincodeForm = ({ setService }) => {
   const [pin, setPin] = useState("");
   const checkPincode = async () => {
-    try {
-      const { data } = await axios.get(fetchPincodes);
+    if (pin) {
+      try {
+        const { data } = await axios.get(fetchPincodes);
 
-      if (data.includes(parseInt(pin))) {
-        setService(true);
-        toast.success("Your Pincode Is Servicable!");
-      } else {
-        setService(false);
-        toast.error("Sorry! Pincode Is Not Servicable!");
+        if (data.includes(parseInt(pin))) {
+          setService(true);
+          toast.success("Your Pincode Is Servicable!");
+        } else {
+          setService(false);
+          toast.error("Sorry! Pincode Is Not Servicable!");
+        }
+      } catch (error) {
+        console.warn(error);
       }
-    } catch (error) {
-      console.warn(error);
+    } else {
+      toast("Please Enter Pincode");
     }
   };
   return (
@@ -30,6 +34,11 @@ const PincodeForm = ({ setService }) => {
         value={pin}
         onChange={(e) => setPin(e.target.value)}
         placeholder="Enter Your City Zip Code"
+        onKeyPress={(e) => {
+          if (e.key === "Enter") {
+            checkPincode();
+          }
+        }}
       />
       <button
         className="flex ml-16 text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded"
