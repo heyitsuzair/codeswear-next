@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import {
   AiFillCloseCircle,
   AiOutlineShoppingCart,
@@ -9,9 +9,19 @@ import {
 } from "react-icons/ai";
 import { BsFillBagCheckFill } from "react-icons/bs";
 import { MdAccountCircle } from "react-icons/md";
+import { FiLogOut } from "react-icons/fi";
+import { useRouter } from "next/router";
+import userContext from "../context/user/userContext";
 
 const Sidebar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
   const ref = useRef();
+
+  const router = useRouter();
+
+  const UserContext = useContext(userContext);
+
+  const { user, setUser } = UserContext;
+
   const ToggleCart = () => {
     if (ref.current.classList.contains("translate-x-full")) {
       ref.current.classList.remove("translate-x-full");
@@ -22,12 +32,29 @@ const Sidebar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("codeswear-token");
+    setUser(null);
+    router.push("/");
+  };
+
   return (
     <>
       <div className="cursor-pointer cart absolute right-0 mx-5 flex gap-2 items-center">
-        <Link href="/login">
-          <MdAccountCircle className="hover:text-pink-600" size={30} />
-        </Link>
+        {user ? (
+          <>
+            <FiLogOut
+              onClick={() => handleLogout()}
+              className="hover:text-pink-600"
+              size={30}
+            />
+          </>
+        ) : (
+          <Link href="/login">
+            <MdAccountCircle className="hover:text-pink-600" size={30} />
+          </Link>
+        )}
+
         <AiOutlineShoppingCart
           className="hover:text-pink-600"
           onClick={ToggleCart}

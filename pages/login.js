@@ -1,9 +1,61 @@
 import Head from "next/head";
 import Link from "next/link";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AiFillLock } from "react-icons/ai";
+import axios from "axios";
+import { loginUser } from "../utils/api";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
+import userContext from "../context/user/userContext";
 
 const Login = () => {
+  const router = useRouter();
+
+  const [formValues, setFormValues] = useState({
+    email: "",
+    password: "",
+  });
+
+  const UserContext = useContext(userContext);
+  const { setUser, user } = UserContext;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const loginData = {
+        email: formValues.email,
+        password: formValues.password,
+      };
+      const { data } = await axios.post(loginUser, loginData);
+
+      if (data.error === false) {
+        setFormValues({
+          email: "",
+          password: "",
+        });
+
+        localStorage.setItem("codeswear-token", JSON.stringify(data.token));
+        setUser(data.token);
+        toast.success("You Are Logged In!", {
+          position: "top-right",
+        });
+        router.push("/");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.msg, {
+        position: "top-left",
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (user) {
+      router.push("/");
+      return;
+    }
+  }, [user]);
+
   return (
     <div>
       <Head>
@@ -35,7 +87,7 @@ const Login = () => {
               </Link>
             </p>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
@@ -48,6 +100,13 @@ const Login = () => {
                   type="email"
                   autoComplete="email"
                   required
+                  value={formValues.email}
+                  onChange={(e) =>
+                    setFormValues({
+                      ...formValues,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
                   className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-pink-500 focus:outline-none focus:ring-pink-500 sm:text-sm"
                   placeholder="Email address"
                 />
@@ -60,6 +119,13 @@ const Login = () => {
                   id="password"
                   name="password"
                   type="password"
+                  value={formValues.password}
+                  onChange={(e) =>
+                    setFormValues({
+                      ...formValues,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
                   autoComplete="current-password"
                   required
                   className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-pink-500 focus:outline-none focus:ring-pink-500 sm:text-sm"

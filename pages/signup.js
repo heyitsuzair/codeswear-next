@@ -1,12 +1,19 @@
 import Head from "next/head";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AiFillLock } from "react-icons/ai";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { addUser } from "../utils/api";
+import { useRouter } from "next/router";
+import userContext from "../context/user/userContext";
 
 const Signup = () => {
+  const router = useRouter();
+
+  const UserContext = useContext(userContext);
+  const { user } = UserContext;
+
   const [formValues, setFormValues] = useState({
     name: "",
     email: "",
@@ -46,6 +53,13 @@ const Signup = () => {
       toast.error(error.response.data.msg);
     }
   };
+
+  useEffect(() => {
+    if (user) {
+      router.push("/");
+      return;
+    }
+  }, [user]);
 
   return (
     <div>

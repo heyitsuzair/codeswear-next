@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import UserState from "../context/user/UserState";
 import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }) {
@@ -85,7 +86,7 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <>
+    <UserState>
       <Navbar
         cart={cart}
         addToCart={addToCart}
@@ -117,7 +118,7 @@ function MyApp({ Component, pageProps }) {
         clearCart={clearCart}
         subTotal={subTotal}
       />
-    </>
+    </UserState>
   );
 }
 
