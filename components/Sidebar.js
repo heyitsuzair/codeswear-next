@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import {
   AiFillCloseCircle,
   AiOutlineShoppingCart,
@@ -9,12 +9,14 @@ import {
 } from "react-icons/ai";
 import { BsFillBagCheckFill } from "react-icons/bs";
 import { MdAccountCircle } from "react-icons/md";
-import { FiLogOut } from "react-icons/fi";
 import { useRouter } from "next/router";
 import userContext from "../context/user/userContext";
+import Dropdown from "./Dropdown";
 
 const Sidebar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
   const ref = useRef();
+
+  const [dropDown, setDropDown] = useState(false);
 
   const router = useRouter();
 
@@ -35,6 +37,7 @@ const Sidebar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
   const handleLogout = () => {
     localStorage.removeItem("codeswear-token");
     setUser(null);
+    setDropDown(false);
     router.push("/");
   };
 
@@ -43,15 +46,26 @@ const Sidebar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
       <div className="cursor-pointer cart absolute right-0 mx-5 flex gap-2 items-center">
         {user ? (
           <>
-            <FiLogOut
-              onClick={() => handleLogout()}
+            <Dropdown handleLogout={handleLogout} dropDown={dropDown} />
+            <MdAccountCircle
               className="hover:text-pink-600"
               size={30}
+              onClick={() => setDropDown(!dropDown)}
             />
           </>
         ) : (
           <Link href="/login">
-            <MdAccountCircle className="hover:text-pink-600" size={30} />
+            <div
+              onClick={() => handleLogout()}
+              className="flex space-x-2 justify-center"
+            >
+              <button
+                type="button"
+                className="inline-block px-6 py-2.5 bg-pink-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-pink-700 hover:shadow-lg focus:bg-pink-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-pink-800 active:shadow-lg transition duration-150 ease-in-out tracking-widest"
+              >
+                Login
+              </button>
+            </div>
           </Link>
         )}
 
@@ -61,6 +75,7 @@ const Sidebar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
           size={30}
         />
       </div>
+
       <div
         className={`${
           Object.keys(cart).length !== 0 ? "translate-x-0" : "translate-x-full"

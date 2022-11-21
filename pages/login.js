@@ -36,9 +36,11 @@ const Login = () => {
 
         localStorage.setItem("codeswear-token", JSON.stringify(data.token));
         setUser(data.token);
+
         toast.success("You Are Logged In!", {
-          position: "top-right",
+          position: "top-left",
         });
+
         router.push("/");
       }
     } catch (error) {
