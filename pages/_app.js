@@ -5,10 +5,13 @@ import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState({});
   const [subTotal, setSubTotal] = useState(0);
+
+  const router = useRouter();
 
   const saveCart = (myCart) => {
     localStorage.setItem("cart", JSON.stringify(myCart));
@@ -24,7 +27,7 @@ function MyApp({ Component, pageProps }) {
   const addToCart = (itemCode, quantity, price, name, size, color) => {
     if (color === null) {
       toast.warn("Please Select Color");
-      return;
+      return false;
     }
     let newCart = cart;
     if (itemCode in cart) {
@@ -34,10 +37,11 @@ function MyApp({ Component, pageProps }) {
     }
     setCart(newCart);
     saveCart(newCart);
+
+    return true;
   };
 
   const clearCart = () => {
-    console.log("clear");
     setCart({});
     saveCart({});
   };
@@ -52,6 +56,21 @@ function MyApp({ Component, pageProps }) {
     }
     setCart(newCart);
     saveCart(newCart);
+  };
+
+  const buyNow = (itemCode, qty, price, name, size, color) => {
+    let newCart = { itemCode: { qty: 1, price, name, size, color } };
+
+    if (color === null) {
+      toast.warn("Please Select Color");
+      return false;
+    }
+    setCart(newCart);
+    saveCart(newCart);
+
+    router.push("/checkout");
+
+    return true;
   };
 
   useEffect(() => {
@@ -92,6 +111,7 @@ function MyApp({ Component, pageProps }) {
         removeFromCart={removeFromCart}
         clearCart={clearCart}
         subTotal={subTotal}
+        buyNow={buyNow}
         {...pageProps}
       />
       <Footer

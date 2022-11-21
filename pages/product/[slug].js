@@ -5,13 +5,14 @@ import axios from "axios";
 import { getProducts } from "../../utils/api";
 import Head from "next/head";
 
-const Slug = ({ addToCart, product }) => {
+const Slug = ({ addToCart, product, buyNow }) => {
   const [service, setService] = useState(null);
 
   const router = useRouter();
   const { slug } = router.query;
   const [color, setColor] = useState(null);
   const [size, setSize] = useState(product.size[0]);
+
   return (
     <div>
       <Head>
@@ -77,6 +78,9 @@ const Slug = ({ addToCart, product }) => {
                 <button
                   disabled={product.availableQty < 1 ? true : false}
                   className="flex ml-auto text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded disabled:opacity-50"
+                  onClick={() =>
+                    buyNow(slug, 1, product.price, product.title, size, color)
+                  }
                 >
                   Buy Now
                 </button>
