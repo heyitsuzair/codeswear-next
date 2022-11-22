@@ -5,7 +5,7 @@ const Dropdown = ({ handleLogout, dropDown }) => {
     <div
       className={`absolute transition-all opacity-${
         dropDown ? "1" : "0"
-      } right-10 top-9 bg-pink-300 rounded-md px-4 py-2 w-40`}
+      } right-10 top-9 bg-white shadow-lg border rounded-lg px-4 py-2 w-40`}
     >
       <ul>
         <li className="py-2 text-sm hover:text-pink-700">My Account</li>

@@ -2,15 +2,18 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/globals.css";
 import { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import UserState from "../context/user/UserState";
 import { useRouter } from "next/router";
+import Toast from "../components/Toast";
+import ProgressBar from "../components/ProgressBar";
 
 function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState({});
   const [subTotal, setSubTotal] = useState(0);
+
+  const [progress, setProgress] = useState(0);
 
   const router = useRouter();
 
@@ -71,6 +74,12 @@ function MyApp({ Component, pageProps }) {
   };
 
   useEffect(() => {
+    router.events.on("routeChangeStart", () => {
+      setProgress(40);
+    });
+    router.events.on("routeChangeComplete", () => {
+      setProgress(100);
+    });
     try {
       if (localStorage.getItem("cart")) {
         setCart(JSON.parse(localStorage.getItem("cart")));
@@ -83,24 +92,18 @@ function MyApp({ Component, pageProps }) {
       localStorage.clear();
     }
     //eslint-disable-next-line
-  }, []);
+  }, [router.query]);
 
   return (
     <UserState>
+      <ProgressBar progress={progress} />
+      <Toast />
       <Navbar
         cart={cart}
         addToCart={addToCart}
         removeFromCart={removeFromCart}
         clearCart={clearCart}
         subTotal={subTotal}
-      />
-      <ToastContainer
-        autoClose={2000}
-        position="bottom-center"
-        pauseOnHover={true}
-        draggable={true}
-        theme="light"
-        toastClassName="toast-custom"
       />
       <Component
         cart={cart}
