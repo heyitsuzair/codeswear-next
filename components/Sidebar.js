@@ -46,7 +46,11 @@ const Sidebar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
       <div className="cursor-pointer cart absolute right-0 mx-5 flex gap-2 items-center">
         {user ? (
           <>
-            <Dropdown handleLogout={handleLogout} dropDown={dropDown} />
+            <Dropdown
+              handleLogout={handleLogout}
+              dropDown={dropDown}
+              setDropDown={setDropDown}
+            />
             <MdAccountCircle
               className="hover:text-pink-600"
               size={30}
