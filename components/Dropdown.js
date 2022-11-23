@@ -5,8 +5,8 @@ const Dropdown = ({ handleLogout, dropDown, setDropDown }) => {
   return (
     <div
       className={`absolute transition-all opacity-${
-        dropDown ? "1" : "0"
-      } right-10 top-9 bg-white shadow-lg border rounded-lg px-4 py-2 w-40`}
+        dropDown ? "1" : "0 hidden"
+      } right-10 top-9  bg-white shadow-lg border rounded-lg px-4 py-2 w-40`}
     >
       <ul>
         <Link href="/my-account" onClick={() => setDropDown(false)}>
