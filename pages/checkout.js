@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { addOrder } from "../utils/api";
 
-const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
+const Checkout = ({ cart, addToCart, removeFromCart, subTotal, clearCart }) => {
   const [formValues, setFormValues] = useState({
     name: "",
     email: "",
@@ -88,6 +88,9 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
         card_year: card.exp_year,
         card_exp: card.exp_month,
         card_cvc: card.cvc,
+        products: cart,
+        address: formValues.address,
+        total: subTotal,
       };
       const TOKEN = JSON.parse(localStorage.getItem("codeswear-token"));
 
@@ -98,6 +101,8 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
       });
       if (data.hasBeenCharged === true) {
         toast.success("Payment Successful!");
+        router.push("/");
+        clearCart();
       } else {
         toast.warn("Something Went Wrong!Please Contact Your Bank");
       }
