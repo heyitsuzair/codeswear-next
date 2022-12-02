@@ -1,8 +1,11 @@
 import Head from "next/head";
-import Link from "next/link";
-import React, { useState } from "react";
-import Script from "next/script";
-import { AiOutlineDelete, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import React, { useContext, useEffect, useState } from "react";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import userContext from "../context/user/userContext";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { addOrder } from "../utils/api";
 
 const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
   const [formValues, setFormValues] = useState({
@@ -11,18 +14,105 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
     phone: "",
     zipcode: "",
     address: "",
-    city: "",
-    state: "",
+    city: "Lahore",
+    state: "Punjab",
   });
+
+  const [card, setCard] = useState({
+    card_no: "",
+    exp_month: "",
+    exp_year: "",
+    cvc: "",
+  });
+
+  const UserContext = useContext(userContext);
+  const { user } = UserContext;
+
+  const router = useRouter();
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("sub");
+    if (formValues.name === "") {
+      toast.error("Please Enter Your Name");
+      return;
+    }
+    if (formValues.email === "") {
+      toast.error("Please Enter Your Email");
+      return;
+    }
+    if (formValues.address === "") {
+      toast.error("Please Enter Your Address");
+      return;
+    }
+    if (formValues.phone === "") {
+      toast.error("Please Enter Your Phone");
+      return;
+    }
+    if (formValues.zipcode === "") {
+      toast.error("Please Enter Your ZIP Code");
+      return;
+    }
+    if (formValues.state === "") {
+      toast.error("Please Enter Your State");
+      return;
+    }
+    if (formValues.city === "") {
+      toast.error("Please Enter Your City");
+      return;
+    }
+    if (card.card_no.length < 16) {
+      toast.error("Enter Valid Card No");
+      return;
+    }
+    if (card.exp_month.length < 2 || parseInt(card.exp_month) > 12) {
+      toast.error("Enter Valid Expiry Month");
+      return;
+    }
+    if (card.exp_year.length < 4 || card.exp_year < new Date().getFullYear()) {
+      toast.error("Enter Valid Expiry Year");
+      return;
+    }
+    if (card.cvc.length < 3) {
+      toast.error("Enter Valid CVC");
+      return;
+    }
+
+    try {
+      const dataToSend = {
+        email: "uzairdevil354123@gmail.com",
+        card_no: card.card_no,
+        card_year: card.exp_year,
+        card_exp: card.exp_month,
+        card_cvc: card.cvc,
+      };
+      const TOKEN = JSON.parse(localStorage.getItem("codeswear-token"));
+
+      const { data } = await axios.post(addOrder, dataToSend, {
+        headers: {
+          token: TOKEN,
+        },
+      });
+      if (data.hasBeenCharged === true) {
+        toast.success("Payment Successful!");
+      } else {
+        toast.warn("Something Went Wrong!Please Contact Your Bank");
+      }
+    } catch (error) {
+      console.error(error.response.data.msg);
+      toast.error(error.response.data.msg);
+    }
   };
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/login");
+      return;
+    }
+  }, [user]);
 
   return (
     <div className="container mx-2 sm:mx-auto ">
@@ -149,7 +239,7 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
                 type="text"
                 id="state"
                 readOnly={true}
-                values={formValues.state}
+                value={formValues.state}
                 name="state"
                 className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
@@ -165,7 +255,7 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
                 id="city"
                 name="city"
                 readOnly={true}
-                values={formValues.city}
+                value={formValues.city}
                 className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
             </div>
@@ -221,6 +311,81 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
               })}
             </ol>
           )}
+          <div className="card-form flex gap-8">
+            <div className="mb-4">
+              <label
+                htmlFor="card_no"
+                className="leading-7 text-sm text-gray-600"
+              >
+                Card No
+              </label>
+              <input
+                type="card_no"
+                id="card_no"
+                maxLength={16}
+                onChange={(e) =>
+                  setCard({ ...card, [e.target.name]: e.target.value })
+                }
+                value={card.card_no}
+                name="card_no"
+                className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                htmlFor="exp_month"
+                className="leading-7 text-sm text-gray-600"
+              >
+                Expiry Month
+              </label>
+              <input
+                type="exp_month"
+                id="exp_month"
+                maxLength={2}
+                onChange={(e) =>
+                  setCard({ ...card, [e.target.name]: e.target.value })
+                }
+                value={card.exp_month}
+                name="exp_month"
+                className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                htmlFor="exp_year"
+                className="leading-7 text-sm text-gray-600"
+              >
+                Expiry Year
+              </label>
+              <input
+                type="exp_year"
+                id="exp_year"
+                maxLength={4}
+                onChange={(e) =>
+                  setCard({ ...card, [e.target.name]: e.target.value })
+                }
+                value={card.exp_year}
+                name="exp_year"
+                className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="cvc" className="leading-7 text-sm text-gray-600">
+                CVC
+              </label>
+              <input
+                type="cvc"
+                id="cvc"
+                maxLength={3}
+                onChange={(e) =>
+                  setCard({ ...card, [e.target.name]: e.target.value })
+                }
+                value={card.cvc}
+                name="cvc"
+                className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+            </div>
+          </div>
           <span>
             Total: <strong>Rs {subTotal}</strong>
           </span>
@@ -232,6 +397,10 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
           >
             Pay Rs {subTotal}
           </button>
+          <span className="ml-8">
+            Pay Securely With{" "}
+            <span className="text-pink-500 font-semibold">Stripe</span>
+          </span>
         </div>
       </form>
     </div>
